@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delete Account</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Noto+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="https://i.ibb.co/WvB9Ncj3/logo.jpg">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="/styles/delete.css">
+  <link rel="stylesheet" href="/styles/animation.css">
+</head>
+<body>
+
+  <div class="delete_container hidden ani" id="step2">
+    <h1 class="ani">Verify Your Identity</h1>
+    <p class="ani"><%=msg%></p>
+    <img src="/media/Delshield.png" alt="Shield_image" class="ani">
+  
+    <!-- 🔑 OTP Verification Form -->
+    <form action="/Delete/<%= userId %>/verify" method="POST" id="otpForm" class="ani">
+      <div class="otp_container">
+        <input type="number" maxlength="1" name="otp1" id="btn1" class="ani" required>
+        <input type="number" maxlength="1" name="otp2" id="btn2" class="ani" required>
+        <input type="number" maxlength="1" name="otp3" id="btn3" class="ani" required>
+        <input type="number" maxlength="1" name="otp4" id="btn4" class="ani" required>
+        <input type="number" maxlength="1" name="otp5" id="btn5" class="ani" required>
+        <input type="number" maxlength="1" name="otp6" id="btn6" class="ani" required>
+      </div>
+  
+      <button type="submit" id="verifyBtn" class="ani">Verify & Delete</button>
+    </form>
+  
+    <p class="resend ani">Didn’t receive code? <a href="#">Resend</a></p>
+  </div>
+  
+  <script src="/script/deviceCheck.js"></script>
+  <script src="/script/delete.js"></script>
+  <script src="/script/resendMail.js"></script>
+</body>
+</html>

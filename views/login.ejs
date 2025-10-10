@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGN IN</title>
+    <link rel="stylesheet" href="/styles/animation.css">
+    <link rel="icon" href="https://i.ibb.co/WvB9Ncj3/logo.jpg">
+    <link rel="stylesheet" href="/styles/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="main">
+        <div class="upper">
+            <p class="ani">
+                <b>. . .</b><br><br>
+                Let's<br>
+                <b>
+                    Continue<br>
+                    With Your<br>
+                    Account<br>
+                </b>
+            </p>
+        </div>
+        <div class="lower">
+            <form id="loginForm" method="POST" action="/login"> <!-- Updated for POST -->
+                <div class="input-container ani">
+                    <i class="fa-regular fa-envelope"></i>
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+            
+                <div class="input-container ani">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+        
+                <button type="submit" class="ani" id="submit">Sign In</button>
+                <a href="/forgotPassword" class="ani"><span id="forgot">Forgot Password?</span></a>
+            </form>
+        
+            <div class="bottom ani">
+                <span>Don't Have an Account?</span>
+                <a href="/signUp"><span>Sign Up</span></a>
+            </div>
+        </div>
+    </div>
+    <script src="/script/deviceCheck.js"></script>
+</body>
+</html>

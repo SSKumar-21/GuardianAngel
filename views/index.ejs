@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Guardian Angel</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/styles/landing.css" />
+  <link rel="stylesheet" href="/styles/menu.css">
+  <link rel="stylesheet" href="/styles/account.css">
+  <link rel="stylesheet" href="/styles/darkMode.css">
+  <link rel="stylesheet" href="/styles/logout.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="icon" href="https://i.ibb.co/WvB9Ncj3/logo.jpg">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+
+<body>
+  <div class="main">
+
+    <!-- Include Header (unchanged structure inside partial) -->
+    <%- include('partials/header.ejs') %>
+
+
+    <div class="lower">
+
+      <!-- Home Page -->
+      <div class="lower page" id="page-home">
+        <div class="mid">
+          <h1>Emergency Help Needed?</h1>
+          <p>Press the button below and help will reach shortly</p>
+          <button id="stopBtn" style="display: none;">Stop & Download</button>
+          <img src="media/center_call.png" id="recordBtn" alt = "<%= userId %>"/>
+        </div>
+      </div>
+      <!-- Location Page -->
+      <div class="lower page" id="page-location" style="display: none">
+        <div class="mid">
+          <p id="status">Fetching current location...</p>
+          <div id="map" style="height: 400px;"></div>
+          <button id="locShare"> Share
+            <img id="shareImg" src="./media/share.png">
+          </button>
+        </div>
+      </div>
+
+      <!-- Bot Page -->
+      <div class="lower page" id="page-bot" style="display: none">
+        <div class="webchat">
+          <iframe
+            style="height: 100%; width: 100%; border: none;"
+            src="https://cdn.botpress.cloud/webchat/v3.3/shareable.html?configUrl=https://files.bpcontent.cloud/2025/06/01/02/20250601023409-6MJU22GE.json"
+          ></iframe>
+        </div>
+      </div>
+
+      <!-- Menu Page -->
+      <div class="lower page" id="page-menu" style="display: none">
+        <div class="menu-header">Profile</div>
+
+        <div class="menu-item" id="accountBtn">
+          <i class="fas fa-user"></i><span>Account</span><i class="fas fa-chevron-right arrow"></i>
+        </div>
+
+        <div class="menu-section-title">General Settings</div>
+
+        <div class="menu-item">
+          <i class="fas fa-globe"></i><span>Language</span><i class="fas fa-chevron-right arrow"></i>
+        </div>
+        <div class="menu-item" id="showAboutBtn">
+          <i class="fas fa-question"></i><span>About</span><i class="fas fa-chevron-right arrow"></i>
+        </div>
+        <div class="menu-item" id="showTermBtn">
+          <i class="fas fa-exclamation-triangle"></i><span>Terms & Conditions</span><i class="fas fa-chevron-right arrow"></i>
+        </div>
+        <a href="/GuardianAngel.apk" download>
+          <div class="menu-item">
+            <i class="fas fa-share-alt"></i>
+            <span>Download Guardian Angel</span>
+            <i class="fas fa-chevron-right arrow"></i>
+          </div>
+        </a>
+        <div class="menu-item">
+          <i class="fas fa-moon"></i>
+          <span>Dark Mode</span>
+          <div class="toggle-container">
+            <div id="darkToggle" class="toggle"></div>
+          </div>
+        </div>
+      </div>
+
+      
+      <!-- ACCOUNT Page -->
+<div class="lower page" id="page-settings" style="display: none">
+  <div class="menu-header">Account</div>
+
+  <div class="menu-section-title">Profile Settings</div>
+  <div class="menu-item" id="personalInfoBtn">
+      <i class="fas fa-id-card"></i>
+      <span>Personal Information</span>
+      <i class="fas fa-chevron-right arrow"></i>
+  </div>
+
+  <div class="menu-section-title">Contacts</div>
+  <div class="menu-item" id="trustedContactBtn">
+      <i class="fas fa-user-shield"></i>
+      <span>Trusted Contact</span>
+      <i class="fas fa-chevron-right arrow"></i>
+  </div>
+
+  <div class="menu-section-title">Account Actions</div>
+  <div class="menu-item" id="logoutBtn">
+      <i class="fas fa-sign-out-alt"></i>
+      <span>Logout</span>
+      <i class="fas fa-chevron-right arrow"></i>
+  </div>
+  <a href="/Delete/<%=userId%>">
+  <div class="menu-item danger" id="deleteBtn" style="color: #a9271b;">
+      <i class="fas fa-trash-alt" style="color: #a9271b;"></i>
+      <span>Delete</span>
+      <i class="fas fa-chevron-right arrow"></i>
+  </div>
+</a>
+</div>
+
+<!-- TRUSTED CONTACT Page -->
+
+  <div class="lower page" id="page-trustedcontact" style="display:none">
+    <div class="menu-header">Trusted Contact</div>
+
+    <form id="trustedContactForm" method="post" action="/trusted-contacts/<%=userId%>">
+      <input type="text" name="name" placeholder="Name" required>
+      <select name="relation" required>
+        <option value="" disabled selected>Select Relation</option>
+        <option value="Parent">Parent</option>
+        <option value="Sibling">Sibling</option>
+        <option value="Friend">Friend</option>
+        <option value="Spouse">Spouse</option>
+        <option value="Colleague">Colleague</option>
+        <option value="Other">Other</option>
+      </select>    
+      <input type="tel" name="phone" placeholder="Phone Number" pattern="[0-9]{10}" required>
+      <button type="submit" id="addContactBtn">Add Contact</button>
+    </form>
+
+    <div class="menu-section-title">Saved Contacts</div>
+    <ul id="contactList">
+  <% if (Name.length === 0 || (Name.length === 1 && Name[0].trim() === "")) { %>
+    <li>No contacts found</li>
+  <% } else { %>
+    <% for (let i = 0; i < Name.length; i++) { %>
+      <%if(Name[i] == "" || Name[i]==" "){%>
+        <% continue;}%>
+        
+      <li>
+        <div class="contact-info">
+          <strong><%= Name[i] %></strong><br>
+          Relation: <%= Rel[i] %><br>
+          Phone: <%= Pho[i] %>
+        </div>
+      
+        <form method="post" action="/contactsDel/<%= userId %>/<%= i %>" style="display:inline;">
+          <button type="submit" class="deleteBtn">
+            <img src="/media/delete.png" alt="Delete" id="deleteBtnContact">
+          </button>
+        </form>
+      </li>
+    <% } %>
+  <% } %>
+</ul>
+
+    
+    
+  </div>
+
+  <!-- PERSONAL INFORMATION Page -->
+<div class="lower page" id="page-personalinfo" style="display:none">
+  <div class="menu-header">Personal Information</div>
+
+  <form id="personalInfoForm" method="post" action="/update-personal-info/<%= userId %>">
+
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" value="<%= user.username || user.fullName%>" required>
+    </div>
+
+
+    <div class="form-group">
+      <label for="email">Email (cannot be changed)</label>
+      <input type="email" id="email" name="email" value="<%= user.email %>" readonly>
+    </div>
+
+
+    <div class="form-group">
+      <label for="phone">Phone</label>
+      <input type="tel" id="phone" name="phone" value="<%= user.phone %>" pattern="[0-9]{10}" >
+    </div>
+
+
+    <div class="form-group">
+      <label for="address">Address</label>
+      <textarea id="address" name="address" rows="2"><%= user.address %></textarea>
+    </div>
+
+    <button type="submit" id="savePersonalInfoBtn">Save Changes</button>
+  </form>
+</div>
+
+
+  </div>
+  </div>
+
+  <!-- Include Footer (unchanged structure inside partial) -->
+  <%- include('partials/footer.ejs') %>
+
+  <!-- Scripts -->
+  <script src="https://cdn.botpress.cloud/webchat/v2.4/inject.js"></script>
+  <script src="/script/bot.js"></script>
+  
+  <script src="/script/minimiseLoading.js"></script>
+  <script src="/script/deviceCheck.js"></script>
+
+  <script src="/script/map.js"></script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="/script/popup.js"></script>
+  <script src="/script/logout.js"></script>
+  <script src="/script/HeaderToIndex.js"></script>
+  <script src="/script/record&Msg.js"></script>
+  <script src="/script/NotRefreshLocation.js"></script>
+
+
+
+</body>
+</html>

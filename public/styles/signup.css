@@ -1,0 +1,116 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: none;
+    box-sizing: border-box;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: center;
+}
+
+.upper {
+    background: linear-gradient(to bottom right, #a9271b, #000000);
+    height: 30vh;
+    width: 100%;
+    color: #fff;
+    font-size: xx-large;
+    top: 0;
+    border-radius: 0 0 10% 10%;
+    display: flex;
+    font-weight: 100;
+}
+
+b{
+    font-weight: 900;
+}
+
+p {
+    margin-left: 30px;
+}
+
+.lower {
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 70vh;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.input-container {
+    position: relative;
+    width: 70%;
+}
+
+
+.input-container input {
+    width: 100%;
+    height: 40px;
+    border: #000 solid 1px;
+    border-radius: 20px;
+    padding: 5px;
+    padding-left: 40px;
+    font-size: 16px;
+    outline: none;
+}
+
+.input-container i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #555;
+    font-size: 18px;
+}
+
+#checkbox {
+    height: 20px;
+}
+
+button {
+    height: 40px;
+    width: 70%;
+    border: #000 solid 2px;
+    border-radius: 20px;
+    background: linear-gradient(to bottom right, #a9271b, #000000);
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.CB {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    gap: 5px;
+}
+
+.bottom{
+    width: 90%;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+a:link, a:visited{
+    color: #a9271b;
+    text-decoration: none;
+}
+
+a:hover{
+    color: rgb(10, 10, 215);
+}

@@ -1,0 +1,86 @@
+  /* Background */
+ .body {
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", "Noto Sans", sans-serif;
+    background: linear-gradient(to bottom right,  #a9271b, #000000);
+    color: #fff;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Container */
+  .logout-wrapper {
+    width: 300px;
+    padding: 30px 20px;
+    margin: 80px auto;
+    text-align: center;
+    border-radius: 18px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: transparent;
+  }
+  
+  /* Header with crown + username */
+  .logout-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+  }
+  
+  .logout-icon {
+    width: 55px;
+    height: 55px;
+  }
+  
+  .logout-title {
+    margin-left: 12px;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+  
+  /* Lock image */
+  .logout-image {
+    width: 100px;
+    height: 100px;
+    margin: 15px auto;
+    display: block;
+  }
+  
+  /* Messages */
+  .logout-text {
+    font-size: 1.6rem;
+    font-weight: 500;
+  }
+  
+  .logout-note {
+    font-size: 0.9rem;
+    opacity: 0.85;
+  }
+  
+  .logout-safe {
+    font-size: 0.9rem;
+  }
+  
+  /* Button */
+  .logout-button {
+    padding: 10px 25px;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    color: #7f0303;
+    background: linear-gradient(to right, rgb(235, 183, 183), rgb(230, 182, 182));
+    transition: 0.3s ease;
+  }
+  
+  .logout-button:hover {
+    background: linear-gradient(to right, #ffe0e0, #f7c4c4);
+    transform: scale(1.05);
+  }
+  

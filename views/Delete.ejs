@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delete Account</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Noto+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="https://i.ibb.co/WvB9Ncj3/logo.jpg">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="/styles/delete.css">
+  <link rel="stylesheet" href="/styles/animation.css">
+</head>
+<body>
+  <div class="delete_container ani" id="step1">
+    <h1>Delete Your Account</h1>
+    <p><%= msg %></p>
+    <img src="/media/delMail.png" alt="Mail_image" class="ani">
+
+    <!-- Dynamic placeholder -->
+    <form action="/Delete/<%= userId %>" method="POST" class="ani">
+      <input id="emailInput" type="email" name="email" placeholder="Enter your email address" required class="ani">
+      <button type="submit" id="sendCodeBtn" class="ani">Send Code</button>
+    </form>
+    
+  <script src="/script/deviceCheck.js"></script>
+</body>
+</html>

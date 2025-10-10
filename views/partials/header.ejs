@@ -1,0 +1,18 @@
+<div class="upper">
+    <div class="nav">
+      <h1 id="userName"><%= typeof username !== 'undefined' ? "Hello " + username : '' %>!</h1>
+      <img src="/media/user.png" alt="user" id="userIcon" />
+    </div>
+    <div>
+      <h2>Emergency Helpline</h2>
+      24×7 services
+      <div class="buttons">
+        <input type="button" value="Call" class="White" id="Call"/> 
+        <!-- id call have calling function window.location.href = "tel:112"; in HeaderToIndex.js -->
+        <input type="button" value="Chat" onclick="switchPage('bot')" class="White" />
+        <input type="button" value="Location" onclick="switchPage('location');  handleMapLoad() ;" class="White"/>
+      </div>
+      <span id="txt">Be Secure</span>
+    </div>
+  </div>
+  

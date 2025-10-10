@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGN UP</title>
+    <link rel="stylesheet" href="styles/animation.css">
+    <link rel="stylesheet" href="styles/signup.css">
+    <link rel="icon" href="https://i.ibb.co/WvB9Ncj3/logo.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    
+    <div class="main">
+        <div class="upper ">
+            <p class="ani">
+                <b>. . .</b><br>
+                Let's<br>
+                <b>
+                    Create<br>
+                    Your<br>
+                    Account<br>
+                </b>
+            </p>
+        </div>
+        <div class="lower">
+            <form id="signupForm" method="POST" action="/signUp">
+                <div class="input-container ani">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" name="name" placeholder="Full Name" id="name" required>
+                </div>
+            
+                <div class="input-container ani">
+                    <i class="fa-regular fa-envelope"></i>
+                    <input type="email" name="email" placeholder="Email" id="email" required>
+                </div>
+            
+                <div class="input-container ani">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" name="password" placeholder="Password" id="password" required>
+                </div>
+            
+                <div class="input-container ani">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" name="rePassword" placeholder="Retype Password" id="rePassword" required>
+                </div>
+            
+                <span class="CB ani">
+                    <input type="checkbox" value="agree" id="checkbox" required> I agree to the Terms and Conditions
+                </span>
+            
+                <button type="submit" class="ani" id="submit">Sign Up</button>
+            </form>
+            
+            
+        
+            
+        <div class="bottom ani">
+            <span >Have an Account?</span>
+            <a href="/"> <span>Sign In</span></a>
+        </div>
+        </div>
+    </div>
+    <script src="./assest/script/deviceCheck.js"></script>
+    <script type="module" src="./assest/script/signup.js"></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+body {
+    background: linear-gradient(to bottom, #390303, rgb(172, 13, 13));
+    font-family: "Noto Sans", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .delete_container {
+    width: 90%;
+    max-width: 400px;
+    border-radius: 30px;
+    background-color: #ac908f;
+    padding: 30px 20px;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  
+  
+  .delete_container h1 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #000;
+  }
+  
+  .delete_container p {
+    font-size: 1rem;
+    color: #252424;
+    margin: 10px 0 20px;
+  }
+  
+  .delete_container img {
+    height: 120px;
+    width: 120px;
+    margin: 20px auto;
+    display: block;
+  }
+  
+  input[type="email"] {
+    height: 50px;
+    width: 90%;
+    font-size: 1rem;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    padding: 0 15px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* OTP inputs */  
+.otp_container {
+    display: flex;
+    justify-content: center;
+    gap: 8px; /* smaller gap */
+    margin: 20px 0;
+  }
+  
+  .otp_container input {
+    width: 32px;
+    height: 40px;
+    font-size: 1rem;
+    text-align: center;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    border: 2px solid #fff;
+    background-color: transparent;
+    outline: none;
+    color: #000;
+  }
+  
+  /* Buttons */
+  button {
+    height: 50px;
+    width: 100%;
+    font-size: 1.1rem;
+    border-radius: 15px;
+    border: none;
+    background-color: rgb(190, 82, 82);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  button:hover {
+    background-color: rgb(160, 60, 60);
+  }
+  
+  .resend {
+    font-size: 0.9rem;
+    margin-top: 15px;
+    color: #000;
+  }
+  
+  .resend a {
+    color: #000;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  
+  /* Responsive */
+  @media (max-width: 480px) {
+    .delete_container {
+      padding: 20px;
+      border-radius: 20px;
+    }
+  
+    .delete_container h1 {
+      font-size: 1.5rem;
+    }
+  
+    .delete_container p {
+      font-size: 0.9rem;
+    }
+  
+    input[type="text"], button {
+      height: 45px;
+      font-size: 1rem;
+    }
+  
+    .delete_container img {
+      height: 180px;
+      width: 180px;
+    }
+  
+    .otp_container input {
+      width: 40px;
+      height: 50px;
+      font-size: 1rem;
+    }
+  }
+  
