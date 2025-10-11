@@ -462,10 +462,17 @@ app.post("/", async (req, res) => {
 
   const userId = info.userID ;
 
+  let sat; // bool type status 
+  if(info.status === 'true'){
+    sat = true;
+  } else {
+    sat = false;
+  }
+
   const data = {
     latitude: info.latitude,
     longitude: info.longitude,
-    status: info.status
+    status: sat
   }
 
   const response = await axios.get(`${url}/users.json`);
