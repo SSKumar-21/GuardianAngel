@@ -5,9 +5,9 @@ document.querySelector('#recordBtn').addEventListener('click', async (e) => {
   e.preventDefault();
 
   if (locationInterval) clearInterval(locationInterval);
-  sendLocation('true',userID);
+  sendLocation(true,userID);
   locationInterval = setInterval(() => {
-    sendLocation('true',userID);
+    sendLocation(true,userID);
   }, 10000);
 
   
@@ -22,7 +22,7 @@ document.querySelector("#stopBtn").addEventListener('click', (e) => {
     locationInterval = null;
     console.log('Location tracking stopped.');
   }
-  sendLocation('false',userID);
+  sendLocation(false,userID);
 });
 
 
