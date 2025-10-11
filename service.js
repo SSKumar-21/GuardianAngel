@@ -468,9 +468,6 @@ app.post("/", async (req, res) => {
   } else {
     sat = false;
   }
-  console.log(info.status+" "+typeof info.status);
-  console.log(sat+" "+typeof sat);
-
 
   const data = {
     latitude: info.latitude,
@@ -490,6 +487,44 @@ app.post("/", async (req, res) => {
 
 });
 
+app.post("/update-password/:IDuser", async (req, res) =>{
+  const id  = req.params.IDuser ;
+  const password1 = req.body.newPassword ;
+  const password2 = req.body.confirmPassword ;
+
+  // 🔒 Password match check
+  if (password1 !== password2) {
+    return res.send(`<script>alert('Passwords do not match!'); window.location.href='/${id}';</script>`);
+  }
+
+  // 🔒 Password strength check
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/;
+  if (!passwordRegex.test(password1)) {
+    return res.send(`<script>alert('Password must be at least 8 characters, include uppercase, lowercase, number, and special character.'); window.location.href='/${id}';</script>`);
+  }
+
+  try{
+    const response = await axios.get(`${url}/users.json`);
+    const users = response.data;
+    let user = users[id];
+    
+    //check with old n new password 
+    if (password1 == user.password) {
+      return res.send(`<script>alert('New Password Can not Be same as Old Password'); window.location.href='/${id}';</script>`);
+    }
+
+    // updating password
+    await axios.patch(`${url}/users/${id}.json`,{
+      password: password2
+    });
+    res.send(`<script>alert('Password Updated'); window.location.href='/${id}';</script>`);
+    
+  } catch (err){
+    console.error("Error during forgot password process:", err);
+    return res.status(500).send("Internal Server Error");
+  }
+
+})
 
 app.listen(port, () => {
     console.log(`Server running on port: ${port}...`);

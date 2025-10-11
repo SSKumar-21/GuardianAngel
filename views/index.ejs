@@ -110,11 +110,18 @@
   </div>
 
   <div class="menu-section-title">Account Actions</div>
-  <div class="menu-item" id="logoutBtn">
-      <i class="fas fa-sign-out-alt"></i>
-      <span>Logout</span>
-      <i class="fas fa-chevron-right arrow"></i>
+  <div class="menu-item" id="resetPasswordBtn">
+    <i class="fas fa-key"></i>
+    <span>Reset Password</span>
+    <i class="fas fa-chevron-right arrow"></i>
   </div>
+  
+  <div class="menu-item" id="logoutBtn">
+    <i class="fas fa-sign-out-alt"></i>
+    <span>Logout</span>
+    <i class="fas fa-chevron-right arrow"></i>
+  </div>
+  
   <a href="/Delete/<%=userId%>">
   <div class="menu-item danger" id="deleteBtn" style="color: #a9271b;">
       <i class="fas fa-trash-alt" style="color: #a9271b;"></i>
@@ -205,6 +212,28 @@
 
     <button type="submit" id="savePersonalInfoBtn">Save Changes</button>
   </form>
+</div>
+
+
+
+<!-- Password ReSet -->
+<div class="lower page" id="page-resetpassword" style="display: none">
+  <div class="menu-header">Reset Password</div>
+
+  <form id="forgotPasswordForm" action="/update-password/<%= userId %>" method="POST">
+    <div class="form-group">
+      <label for="newPassword">New Password</label>
+      <input type="password" id="newPassword" name="newPassword" placeholder="Enter new password" required>
+    </div>
+
+    <div class="form-group">
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm new password" required>
+    </div>
+
+    <button type="submit" class="btn-update">Update Password</button>
+  </form>
+
 </div>
 
 

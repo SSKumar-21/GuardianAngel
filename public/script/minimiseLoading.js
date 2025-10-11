@@ -35,6 +35,13 @@ document.addEventListener("DOMContentLoaded", function () {
           switchPage("personalinfo");
       });
   }
+
+  const resetPassword = document.getElementById("resetPasswordBtn");
+  if (resetPassword) {
+    resetPassword.addEventListener("click", function () {
+          switchPage("resetpassword");
+      });
+  }
 });
 
 // Add dark mode CSS dynamically
