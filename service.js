@@ -463,11 +463,14 @@ app.post("/", async (req, res) => {
   const userId = info.userID ;
 
   let sat; // bool type status 
-  if(info.status === 'true'){
+  if(info.status == 'true'|| info.status){
     sat = true;
   } else {
     sat = false;
   }
+  console.log(info.status+" "+typeof info.status);
+  console.log(sat+" "+typeof sat);
+
 
   const data = {
     latitude: info.latitude,
