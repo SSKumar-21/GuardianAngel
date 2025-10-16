@@ -64,10 +64,13 @@
         </div>
 
         <div class="menu-section-title">General Settings</div>
-
+        <div class="menu-item" id="Product" onclick="window.open('/products/<%=userId%>');">
+          <i class="fas fa-shop"></i><span>Products</span><i class="fas fa-chevron-right arrow"></i>
+        </div>
         <div class="menu-item">
           <i class="fas fa-globe"></i><span>Language</span><i class="fas fa-chevron-right arrow"></i>
         </div>
+        
         <div class="menu-item" id="showAboutBtn">
           <i class="fas fa-question"></i><span>About</span><i class="fas fa-chevron-right arrow"></i>
         </div>
@@ -123,6 +126,7 @@
   </div>
   
   <a href="/Delete/<%=userId%>">
+
   <div class="menu-item danger" id="deleteBtn" style="color: #a9271b;">
       <i class="fas fa-trash-alt" style="color: #a9271b;"></i>
       <span>Delete</span>

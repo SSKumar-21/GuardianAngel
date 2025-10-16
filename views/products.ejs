@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop Essentials</title>
+  <link rel="stylesheet" href="/styles/products.css" />
+  <link rel="icon" href="https://i.ibb.co/WvB9Ncj3/logo.jpg">
+  <script src="https://kit.fontawesome.com/a2e0e6cfd8.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <!-- ✅ Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="/media/logo.jpeg" alt="Logo" />
+    </div>
+    <nav class="nav-links" id="navLinks">
+      <a href="#">Home</a>
+      <a href="#">My Orders</a>
+      <a href="#">Information</a>
+      <a href="#">Cart</a>
+    </nav>
+    <div class="menu-toggle" id="menuToggle">☰</div>
+  </header>
+
+  <!-- ✅ Hero Section -->
+  <section class="hero">
+    <h1>ELEVATE YOUR <br> ESSENTIALS</h1>
+    <p>Discover our exclusive collection of must-have accessories</p>
+    <button class="btn-primary">Shop Now</button>
+  </section>
+
+  <!-- ✅ Products Section -->
+  <section class="products">
+    <div class="product-card">
+      <img src="/media/KeyChain.jpg" alt="Key Chain" />
+      <h3>Key Chain</h3>
+      <p class="price">₹399</p>
+      <button class="btn-buy">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="/media/Pendrive.jpg" alt="Pen Drive" />
+      <h3>Pen Drive</h3>
+      <p class="price">₹599</p>
+      <button class="btn-buy">Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="/media/b.jpg" alt="Bracelet" />
+      <h3>Bracelet</h3>
+      <p class="price">₹149</p>
+      <button class="btn-buy">Buy Now</button>
+    </div>
+  </section>
+
+  <!-- ✅ Footer -->
+  <footer class="footer">
+    <p>© 2025 Shop Essentials | Crafted with ❤️</p>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  </script>
+</body>
+</html>

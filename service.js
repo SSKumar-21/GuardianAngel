@@ -526,11 +526,26 @@ app.post("/update-password/:IDuser", async (req, res) =>{
 
 })
 
-app.listen(port, () => {
-    console.log(`Server running on port: ${port}...`);
+app.get("/products/:userID", async (req, res) => {
+  const id = req.params.userID; 
+
+  try {
+    const response = await axios.get(`${url}/users.json`);
+    const users = response.data;
+    let user = users[id];
+
+    if (user) {
+      res.render("products.ejs"); 
+    } else {
+      res.status(404).send("<h1>User not found in database</h1>");
+    }
+  } catch (err) {
+    console.error("Error fetching user data:", err.message);
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 
-
-
-
+app.listen(port, () => {
+    console.log(`Server running on port: ${port}...`);
+});
