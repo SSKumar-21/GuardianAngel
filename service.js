@@ -30,32 +30,42 @@ app.get("/forgotPassword", (req, res) => {
 app.post("/login", async (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
-  
+
     try {
-      const response = await axios.get(`${url}/users.json`);
-      const users = response.data;
-  
-      let loginSuccess = false;
-      let IDuser = "";
-  
-      for (const userId in users) {
-        const user = users[userId];
-  
-        if (user.email === email && user.password === password) {
-          loginSuccess = true;
-          IDuser = userId ;
-          break;
+        const response = await axios.get(`${url}/users.json`);
+        const users = response.data;
+
+        let loginSuccess = false;
+        let IDuser = "";
+
+        for (const userId in users) {
+            const user = users[userId];
+
+            if (user.email === email && user.password === password) {
+                loginSuccess = true;
+                IDuser = userId;
+                break;
+            }
         }
-      }
-  
-      if (loginSuccess) {
-        res.send(`<script>window.location.href = "/${IDuser}";</script>`);
-      } else {
-        res.send(`<script>alert("Email or password is incorrect!"); window.location.href = "/";</script>`);
-      }
+
+        if (loginSuccess) {
+            res.status(200).send(`
+                <script>
+                    window.location.href = "/${IDuser}";
+                </script>
+            `);
+        } else {
+            res.status(404).send(`
+                <script>
+                    alert("Email or password is incorrect!");
+                    window.location.href = "/";
+                </script>
+            `);
+        }
+
     } catch (error) {
-      console.error("Error during login:", error);
-      res.status(500).send("Internal Server Error");
+        console.error("Error during login:", error);
+        res.status(500).send("Internal Server Error");
     }
 });
 
